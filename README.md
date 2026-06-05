@@ -8,6 +8,11 @@ The countdown targets Apple’s WWDC26 keynote: Monday, June 8, 2026 at 10:00 a.
 
 ![macOS version of WWDC26 Countdown](docs/macOS.png)
 
+## Download
+
+Download the latest macOS app from the GitHub release:
+[WWDC26Countdown.dmg](https://github.com/aelzohry/WWDC26Countdown/releases/latest/download/WWDC26Countdown.dmg)
+
 ## Run
 
 ```sh
