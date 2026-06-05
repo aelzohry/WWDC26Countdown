@@ -10,6 +10,14 @@ The countdown targets Apple’s WWDC26 keynote: Monday, June 8, 2026 at 10:00 a.
 swift run WWDC26Countdown
 ```
 
+Or open the native project in Xcode:
+
+```sh
+open WWDC26Countdown.xcodeproj
+```
+
+Select the `WWDC26Countdown` scheme and run it. The Xcode target uses local signing, so it should build and debug on this Mac without a developer team.
+
 ## Build
 
 ```sh

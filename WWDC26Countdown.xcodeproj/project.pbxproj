@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F5F20372C2A4F9200A20001 /* AnimatedBackgrounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F20372C2A4F9200A30001 /* AnimatedBackgrounds.swift */; };
+		2F5F20372C2A4F9200A20002 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F20372C2A4F9200A30002 /* AppTheme.swift */; };
+		2F5F20372C2A4F9200A20003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F20372C2A4F9200A30003 /* ContentView.swift */; };
+		2F5F20372C2A4F9200A20004 /* EventDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F20372C2A4F9200A30004 /* EventDates.swift */; };
+		2F5F20372C2A4F9200A20005 /* HeroOrb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F20372C2A4F9200A30005 /* HeroOrb.swift */; };
+		2F5F20372C2A4F9200A20006 /* MenuBarCountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F20372C2A4F9200A30006 /* MenuBarCountdownView.swift */; };
+		2F5F20372C2A4F9200A20007 /* WWDCCountdownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5F20372C2A4F9200A30007 /* WWDCCountdownApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2F5F20372C2A4F9200A30001 /* AnimatedBackgrounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedBackgrounds.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30002 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30003 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30004 /* EventDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDates.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30005 /* HeroOrb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroOrb.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30006 /* MenuBarCountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCountdownView.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30007 /* WWDCCountdownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWDCCountdownApp.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30008 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A30009 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A3000A /* build-app.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-app.sh"; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A3000B /* generate-icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "generate-icon.swift"; sourceTree = "<group>"; };
+		2F5F20372C2A4F9200A3000C /* WWDC26Countdown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WWDC26Countdown.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2F5F20372C2A4F9200A40001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F5F20372C2A4F9200A50001 = {
+			isa = PBXGroup;
+			children = (
+				2F5F20372C2A4F9200A30008 /* Package.swift */,
+				2F5F20372C2A4F9200A30009 /* README.md */,
+				2F5F20372C2A4F9200A50002 /* Sources */,
+				2F5F20372C2A4F9200A50004 /* Scripts */,
+				2F5F20372C2A4F9200A50005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2F5F20372C2A4F9200A50002 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2F5F20372C2A4F9200A50003 /* WWDCCountdownApp */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2F5F20372C2A4F9200A50003 /* WWDCCountdownApp */ = {
+			isa = PBXGroup;
+			children = (
+				2F5F20372C2A4F9200A30001 /* AnimatedBackgrounds.swift */,
+				2F5F20372C2A4F9200A30002 /* AppTheme.swift */,
+				2F5F20372C2A4F9200A30003 /* ContentView.swift */,
+				2F5F20372C2A4F9200A30004 /* EventDates.swift */,
+				2F5F20372C2A4F9200A30005 /* HeroOrb.swift */,
+				2F5F20372C2A4F9200A30006 /* MenuBarCountdownView.swift */,
+				2F5F20372C2A4F9200A30007 /* WWDCCountdownApp.swift */,
+			);
+			path = WWDCCountdownApp;
+			sourceTree = "<group>";
+		};
+		2F5F20372C2A4F9200A50004 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				2F5F20372C2A4F9200A3000A /* build-app.sh */,
+				2F5F20372C2A4F9200A3000B /* generate-icon.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		2F5F20372C2A4F9200A50005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F5F20372C2A4F9200A3000C /* WWDC26Countdown.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F5F20372C2A4F9200A10001 /* WWDC26Countdown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F5F20372C2A4F9200AA002 /* Build configuration list for PBXNativeTarget "WWDC26Countdown" */;
+			buildPhases = (
+				2F5F20372C2A4F9200A40002 /* Sources */,
+				2F5F20372C2A4F9200A40001 /* Frameworks */,
+				2F5F20372C2A4F9200A40003 /* Resources */,
+				2F5F20372C2A4F9200A40004 /* Generate App Icon */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WWDC26Countdown;
+			productName = WWDC26Countdown;
+			productReference = 2F5F20372C2A4F9200A3000C /* WWDC26Countdown.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2F5F20372C2A4F9200A00001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2604;
+				LastUpgradeCheck = 2604;
+				TargetAttributes = {
+					2F5F20372C2A4F9200A10001 = {
+						CreatedOnToolsVersion = 26.4;
+					};
+				};
+			};
+			buildConfigurationList = 2F5F20372C2A4F9200AA001 /* Build configuration list for PBXProject "WWDC26Countdown" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2F5F20372C2A4F9200A50001;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2F5F20372C2A4F9200A50005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2F5F20372C2A4F9200A10001 /* WWDC26Countdown */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F5F20372C2A4F9200A40003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2F5F20372C2A4F9200A40004 /* Generate App Icon */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Scripts/generate-icon.swift",
+			);
+			name = "Generate App Icon";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/AppIcon.icns",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -euo pipefail\nICON_SOURCE=\"$DERIVED_FILE_DIR/AppIcon-1024.png\"\nICONSET_DIR=\"$DERIVED_FILE_DIR/AppIcon.iconset\"\nRESOURCES_DIR=\"$TARGET_BUILD_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH\"\nmkdir -p \"$RESOURCES_DIR\"\nswift \"$SRCROOT/Scripts/generate-icon.swift\" \"$ICON_SOURCE\"\nrm -rf \"$ICONSET_DIR\"\nmkdir -p \"$ICONSET_DIR\"\nsips -z 16 16 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_16x16.png\" >/dev/null\nsips -z 32 32 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_16x16@2x.png\" >/dev/null\nsips -z 32 32 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_32x32.png\" >/dev/null\nsips -z 64 64 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_32x32@2x.png\" >/dev/null\nsips -z 128 128 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_128x128.png\" >/dev/null\nsips -z 256 256 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_128x128@2x.png\" >/dev/null\nsips -z 256 256 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_256x256.png\" >/dev/null\nsips -z 512 512 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_256x256@2x.png\" >/dev/null\nsips -z 512 512 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_512x512.png\" >/dev/null\nsips -z 1024 1024 \"$ICON_SOURCE\" --out \"$ICONSET_DIR/icon_512x512@2x.png\" >/dev/null\niconutil -c icns \"$ICONSET_DIR\" -o \"$RESOURCES_DIR/AppIcon.icns\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F5F20372C2A4F9200A40002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F5F20372C2A4F9200A20001 /* AnimatedBackgrounds.swift in Sources */,
+				2F5F20372C2A4F9200A20002 /* AppTheme.swift in Sources */,
+				2F5F20372C2A4F9200A20003 /* ContentView.swift in Sources */,
+				2F5F20372C2A4F9200A20004 /* EventDates.swift in Sources */,
+				2F5F20372C2A4F9200A20005 /* HeroOrb.swift in Sources */,
+				2F5F20372C2A4F9200A20006 /* MenuBarCountdownView.swift in Sources */,
+				2F5F20372C2A4F9200A20007 /* WWDCCountdownApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2F5F20372C2A4F9200AB001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2F5F20372C2A4F9200AB002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		2F5F20372C2A4F9200AB003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "WWDC26 Countdown";
+				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.codex.wwdc26-countdown";
+				PRODUCT_NAME = WWDC26Countdown;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		2F5F20372C2A4F9200AB004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "WWDC26 Countdown";
+				INFOPLIST_KEY_CFBundleIconFile = AppIcon;
+				INFOPLIST_KEY_LSMinimumSystemVersion = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.codex.wwdc26-countdown";
+				PRODUCT_NAME = WWDC26Countdown;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F5F20372C2A4F9200AA001 /* Build configuration list for PBXProject "WWDC26Countdown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F5F20372C2A4F9200AB001 /* Debug */,
+				2F5F20372C2A4F9200AB002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F5F20372C2A4F9200AA002 /* Build configuration list for PBXNativeTarget "WWDC26Countdown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F5F20372C2A4F9200AB003 /* Debug */,
+				2F5F20372C2A4F9200AB004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2F5F20372C2A4F9200A00001 /* Project object */;
+}
