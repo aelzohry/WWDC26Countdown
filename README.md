@@ -31,4 +31,4 @@ swift build -c release
 open .build/release/WWDC26Countdown.app
 ```
 
-The bundle script also generates a local `.icns` icon, so the release app is self-contained.
+The Xcode target and bundle script both generate a local `.icns` icon, so the app is self-contained either way.

@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct MenuBarCountdownView: View {
-    @Environment(\.openWindow) private var openWindow
-    @Environment(\.dismiss) private var dismiss
+    var openMainWindow: () -> Void = {}
+    var dismissMenu: () -> Void = {}
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
@@ -32,12 +32,12 @@ struct MenuBarCountdownView: View {
 
                 HStack {
                     Button("Open Window") {
-                        openWindow(id: "main")
-                        dismiss()
+                        openMainWindow()
                     }
 
                     Button("WWDC Page") {
                         NSWorkspace.shared.open(URL(string: "https://developer.apple.com/wwdc26/")!)
+                        dismissMenu()
                     }
 
                     Button("Quit") {
