@@ -28,6 +28,11 @@ struct MenuBarCountdownView: View {
 
                 CompactCountdown(snapshot: snapshot)
 
+                Text(snapshot.keynoteLine)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
                 Divider()
 
                 HStack {

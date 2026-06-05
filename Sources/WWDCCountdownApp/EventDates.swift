@@ -83,8 +83,12 @@ struct CountdownSnapshot {
         } else if isComplete {
             "The keynote has started. Go absorb the future."
         } else {
-            "Keynote: Monday, June 8, 2026 at 10:00 a.m. PT"
+            keynoteLine
         }
+    }
+
+    var keynoteLine: String {
+        "Keynote: \(Self.localKeynoteFormatter.string(from: target)) \(Self.localTimeZoneFormatter.string(from: target))"
     }
 
     var menuBarTitle: String {
@@ -122,6 +126,23 @@ struct CountdownSnapshot {
         default:
             return .ready
         }
+    }
+
+    private static var localKeynoteFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = .autoupdatingCurrent
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        return formatter
+    }
+
+    private static var localTimeZoneFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = .autoupdatingCurrent
+        formatter.timeZone = .autoupdatingCurrent
+        formatter.dateFormat = "z"
+        return formatter
     }
 }
 

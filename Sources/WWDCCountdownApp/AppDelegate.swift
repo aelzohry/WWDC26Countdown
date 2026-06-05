@@ -65,7 +65,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSPo
         let popover = NSPopover()
         popover.behavior = .transient
         popover.delegate = self
-        popover.contentSize = NSSize(width: 330, height: 232)
+        popover.contentSize = NSSize(width: 330, height: 268)
         popover.contentViewController = NSHostingController(
             rootView: MenuBarCountdownView(
                 openMainWindow: { [weak self] in
