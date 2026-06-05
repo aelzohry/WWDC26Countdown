@@ -2,6 +2,7 @@ import SwiftUI
 
 struct MenuBarCountdownView: View {
     var openMainWindow: () -> Void = {}
+    var resetMainWindow: () -> Void = {}
     var dismissMenu: () -> Void = {}
 
     var body: some View {
@@ -35,18 +36,26 @@ struct MenuBarCountdownView: View {
 
                 Divider()
 
-                HStack {
-                    Button("Open Window") {
-                        openMainWindow()
+                Grid(horizontalSpacing: 8, verticalSpacing: 8) {
+                    GridRow {
+                        Button("Open Window") {
+                            openMainWindow()
+                        }
+
+                        Button("Reset Size") {
+                            resetMainWindow()
+                        }
                     }
 
-                    Button("WWDC Page") {
-                        NSWorkspace.shared.open(URL(string: "https://developer.apple.com/wwdc26/")!)
-                        dismissMenu()
-                    }
+                    GridRow {
+                        Button("WWDC Page") {
+                            NSWorkspace.shared.open(URL(string: "https://developer.apple.com/wwdc26/")!)
+                            dismissMenu()
+                        }
 
-                    Button("Quit") {
-                        NSApplication.shared.terminate(nil)
+                        Button("Quit") {
+                            NSApplication.shared.terminate(nil)
+                        }
                     }
                 }
                 .buttonStyle(.bordered)
