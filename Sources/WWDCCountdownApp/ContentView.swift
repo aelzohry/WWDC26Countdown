@@ -6,54 +6,64 @@ struct ContentView: View {
     @State private var sparkleSeed = 0
 
     var body: some View {
-        TimelineView(.periodic(from: .now, by: 1)) { context in
-            let snapshot = CountdownSnapshot(now: context.date, target: EventDates.wwdc26Keynote)
+        if reduceMotion {
+            TimelineView(.periodic(from: .now, by: 1)) { context in
+                countdownScene(date: context.date)
+            }
+        } else {
+            TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { context in
+                countdownScene(date: context.date)
+            }
+        }
+    }
 
-            ZStack {
-                AuroraBackground(date: context.date, reduceMotion: reduceMotion)
-                    .ignoresSafeArea()
+    private func countdownScene(date: Date) -> some View {
+        let snapshot = CountdownSnapshot(now: date, target: EventDates.wwdc26Keynote)
 
-                StarField(date: context.date, reduceMotion: reduceMotion)
-                    .ignoresSafeArea()
+        return ZStack {
+            AuroraBackground(date: date, reduceMotion: reduceMotion)
+                .ignoresSafeArea()
 
-                VStack(spacing: 26) {
-                    HeaderBar(snapshot: snapshot)
+            StarField(date: date, reduceMotion: reduceMotion)
+                .ignoresSafeArea()
 
-                    HStack(spacing: 28) {
-                        HeroOrb(snapshot: snapshot, date: context.date)
-                            .frame(width: 330, height: 330)
-                            .accessibilityHidden(true)
+            VStack(spacing: 26) {
+                HeaderBar(snapshot: snapshot)
 
-                        VStack(alignment: .leading, spacing: 24) {
-                            VStack(alignment: .leading, spacing: 12) {
-                                Text(snapshot.headline)
-                                    .font(.system(size: 54, weight: .black, design: .rounded))
-                                    .lineLimit(2)
-                                    .minimumScaleFactor(0.74)
+                HStack(spacing: 28) {
+                    HeroOrb(snapshot: snapshot, date: date)
+                        .frame(width: 330, height: 330)
+                        .accessibilityHidden(true)
 
-                                Text(snapshot.statusLine)
-                                    .font(.title3.weight(.medium))
-                                    .foregroundStyle(.white.opacity(0.74))
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
+                    VStack(alignment: .leading, spacing: 24) {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text(snapshot.headline)
+                                .font(.system(size: 54, weight: .black, design: .rounded))
+                                .lineLimit(2)
+                                .minimumScaleFactor(0.74)
 
-                            CountdownGrid(snapshot: snapshot, showSeconds: showSeconds)
-
-                            ControlStrip(snapshot: snapshot, showSeconds: $showSeconds, sparkleSeed: $sparkleSeed)
+                            Text(snapshot.statusLine)
+                                .font(.title3.weight(.medium))
+                                .foregroundStyle(.white.opacity(0.74))
+                                .fixedSize(horizontal: false, vertical: true)
                         }
+
+                        CountdownGrid(snapshot: snapshot, showSeconds: showSeconds)
+
+                        ControlStrip(snapshot: snapshot, showSeconds: $showSeconds, sparkleSeed: $sparkleSeed)
                     }
-
-                    HypeRibbon(snapshot: snapshot, date: context.date)
-
-                    CreatorFooter()
                 }
-                .padding(34)
+
+                HypeRibbon(snapshot: snapshot, date: date)
+
+                CreatorFooter()
             }
-            .foregroundStyle(.white)
-            .overlay {
-                CelebrationBurst(seed: sparkleSeed)
-                    .allowsHitTesting(false)
-            }
+            .padding(34)
+        }
+        .foregroundStyle(.white)
+        .overlay {
+            CelebrationBurst(seed: sparkleSeed)
+                .allowsHitTesting(false)
         }
     }
 }
@@ -172,6 +182,7 @@ private struct CountdownTile: View {
                 .font(.system(size: 48, weight: .black, design: .rounded))
                 .monospacedDigit()
                 .contentTransition(.numericText(value: Double(value)))
+                .animation(.smooth(duration: 0.28), value: value)
 
             Text(label.uppercased())
                 .font(.caption.weight(.bold))
