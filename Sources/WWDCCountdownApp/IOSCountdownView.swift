@@ -29,67 +29,153 @@ struct IOSCountdownView: View {
                 .ignoresSafeArea()
 
             GeometryReader { proxy in
-                let contentWidth = min(proxy.size.width - 40, 520)
-                let compactHeight = proxy.size.height < 840
-                let heroSize = min(compactHeight ? 192 : 222, max(166, proxy.size.height * 0.24))
-                let tileWidth = min(showSeconds ? 78 : 94, (contentWidth - 36) / CGFloat(showSeconds ? 4 : 3))
-                let tileHeight: CGFloat = compactHeight ? 72 : 78
-                let verticalPadding: CGFloat = compactHeight ? 8 : 12
-
-                VStack(spacing: compactHeight ? 10 : 13) {
-                    MobileHeader(snapshot: snapshot, compact: compactHeight)
-
-                    HeroOrb(snapshot: snapshot, date: date)
-                        .frame(width: heroSize, height: heroSize)
-                        .accessibilityHidden(true)
-
-                    VStack(spacing: compactHeight ? 6 : 8) {
-                        Text(snapshot.headline)
-                            .font(.system(size: compactHeight ? 32 : 36, weight: .black, design: .rounded))
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.74)
-
-                        Text(snapshot.statusLine)
-                            .font(.system(size: compactHeight ? 14 : 15, weight: .medium))
-                            .foregroundStyle(.white.opacity(0.72))
-                            .multilineTextAlignment(.center)
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.78)
-                    }
-
-                    CountdownGrid(
-                        snapshot: snapshot,
-                        showSeconds: showSeconds,
-                        tileWidth: tileWidth,
-                        tileHeight: tileHeight,
-                        valueFontSize: compactHeight ? 28 : 30
-                    )
-
-                    MobileHypeCard(snapshot: snapshot, compact: compactHeight)
-
-                    MobileActionDock(
-                        snapshot: snapshot,
-                        showSeconds: $showSeconds,
-                        sparkleSeed: $sparkleSeed,
-                        compact: compactHeight,
-                        openWWDCPage: { openURL(EventDates.wwdcURL) }
-                    )
-
-                    Spacer(minLength: compactHeight ? 4 : 12)
-
-                    CreatorFooter()
-                }
-                .padding(.horizontal, 20)
-                .safeAreaPadding(.top, verticalPadding)
-                .safeAreaPadding(.bottom, verticalPadding)
-                .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
+                countdownLayout(snapshot: snapshot, date: date, proxy: proxy)
             }
         }
         .foregroundStyle(.white)
         .overlay {
             CelebrationBurst(seed: sparkleSeed)
                 .allowsHitTesting(false)
+        }
+    }
+
+    @ViewBuilder
+    private func countdownLayout(snapshot: CountdownSnapshot, date: Date, proxy: GeometryProxy) -> some View {
+        if proxy.size.width > proxy.size.height {
+            landscapeLayout(snapshot: snapshot, date: date, proxy: proxy)
+        } else {
+            portraitLayout(snapshot: snapshot, date: date, proxy: proxy)
+        }
+    }
+
+    private func portraitLayout(snapshot: CountdownSnapshot, date: Date, proxy: GeometryProxy) -> some View {
+        let contentWidth = min(proxy.size.width - 40, 520)
+        let compactHeight = proxy.size.height < 840
+        let heroSize = min(compactHeight ? 192 : 222, max(166, proxy.size.height * 0.24))
+        let tileWidth = min(showSeconds ? 78 : 94, (contentWidth - 36) / CGFloat(showSeconds ? 4 : 3))
+        let tileHeight: CGFloat = compactHeight ? 72 : 78
+        let verticalPadding: CGFloat = compactHeight ? 8 : 12
+
+        return VStack(spacing: compactHeight ? 10 : 13) {
+            MobileHeader(snapshot: snapshot, compact: compactHeight)
+
+            HeroOrb(snapshot: snapshot, date: date)
+                .frame(width: heroSize, height: heroSize)
+                .accessibilityHidden(true)
+
+            MobileHeadline(snapshot: snapshot, compact: compactHeight)
+
+            CountdownGrid(
+                snapshot: snapshot,
+                showSeconds: showSeconds,
+                tileWidth: tileWidth,
+                tileHeight: tileHeight,
+                valueFontSize: compactHeight ? 28 : 30
+            )
+
+            MobileHypeCard(snapshot: snapshot, compact: compactHeight)
+
+            MobileActionDock(
+                snapshot: snapshot,
+                showSeconds: $showSeconds,
+                sparkleSeed: $sparkleSeed,
+                compact: compactHeight,
+                openWWDCPage: { openURL(EventDates.wwdcURL) }
+            )
+
+            Spacer(minLength: compactHeight ? 4 : 12)
+
+            CreatorFooter()
+        }
+        .padding(.horizontal, 20)
+        .safeAreaPadding(.top, verticalPadding)
+        .safeAreaPadding(.bottom, verticalPadding)
+        .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
+    }
+
+    private func landscapeLayout(snapshot: CountdownSnapshot, date: Date, proxy: GeometryProxy) -> some View {
+        let horizontalPadding: CGFloat = 16
+        let verticalPadding: CGFloat = 8
+        let columnSpacing: CGFloat = proxy.size.width < 760 ? 12 : 16
+        let availableWidth = proxy.size.width - (horizontalPadding * 2)
+        let minimumRightWidth: CGFloat = proxy.size.width < 760 ? 300 : 380
+        let proposedLeftWidth = min(360, max(220, availableWidth * 0.40))
+        let leftWidth = min(proposedLeftWidth, availableWidth - columnSpacing - minimumRightWidth)
+        let rightWidth = min(520, availableWidth - leftWidth - columnSpacing)
+        let heroSize = min(210, max(158, proxy.size.height * 0.48))
+        let tileWidth = min(showSeconds ? 72 : 92, (rightWidth - 36) / CGFloat(showSeconds ? 4 : 3))
+
+        return HStack(spacing: columnSpacing) {
+            VStack(spacing: 8) {
+                MobileHeader(snapshot: snapshot, compact: true)
+
+                Spacer(minLength: 0)
+
+                HeroOrb(snapshot: snapshot, date: date)
+                    .frame(width: heroSize, height: heroSize)
+                    .accessibilityHidden(true)
+
+                MobileHeadline(snapshot: snapshot, compact: true, headlineSize: 28, statusSize: 13)
+
+                Spacer(minLength: 0)
+            }
+            .frame(width: leftWidth)
+            .frame(maxHeight: .infinity)
+
+            VStack(spacing: 8) {
+                Spacer()
+
+                CountdownGrid(
+                    snapshot: snapshot,
+                    showSeconds: showSeconds,
+                    tileWidth: tileWidth,
+                    tileHeight: 64,
+                    valueFontSize: 26
+                )
+
+                MobileHypeCard(snapshot: snapshot, compact: true)
+
+                MobileActionDock(
+                    snapshot: snapshot,
+                    showSeconds: $showSeconds,
+                    sparkleSeed: $sparkleSeed,
+                    compact: true,
+                    openWWDCPage: { openURL(EventDates.wwdcURL) }
+                )
+
+                Spacer(minLength: 2)
+
+                CreatorFooter()
+            }
+            .frame(width: rightWidth)
+            .frame(maxHeight: .infinity)
+        }
+        .safeAreaPadding(.horizontal, horizontalPadding)
+        .safeAreaPadding(.vertical, verticalPadding)
+        .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+    }
+}
+
+private struct MobileHeadline: View {
+    let snapshot: CountdownSnapshot
+    let compact: Bool
+    var headlineSize: CGFloat?
+    var statusSize: CGFloat?
+
+    var body: some View {
+        VStack(spacing: compact ? 6 : 8) {
+            Text(snapshot.headline)
+                .font(.system(size: headlineSize ?? (compact ? 32 : 36), weight: .black, design: .rounded))
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .minimumScaleFactor(0.74)
+
+            Text(snapshot.statusLine)
+                .font(.system(size: statusSize ?? (compact ? 14 : 15), weight: .medium))
+                .foregroundStyle(.white.opacity(0.72))
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+                .minimumScaleFactor(0.78)
         }
     }
 }
