@@ -44,6 +44,8 @@ struct ContentView: View {
                     }
 
                     HypeRibbon(snapshot: snapshot, date: context.date)
+
+                    CreatorFooter()
                 }
                 .padding(34)
             }
@@ -92,6 +94,41 @@ private struct HeaderBar: View {
                     .strokeBorder(.white.opacity(0.15), lineWidth: 1)
             }
         }
+    }
+}
+
+private struct CreatorFooter: View {
+    private let profileURL = URL(string: "https://bio.link/aelzohry")!
+
+    var body: some View {
+        Link(destination: profileURL) {
+            HStack(spacing: 8) {
+                Text("Created with")
+
+                Image(systemName: "heart.fill")
+                    .foregroundStyle(AppTheme.pink)
+                    .symbolEffect(.pulse, options: .repeating)
+                    .accessibilityLabel("love")
+
+                Text("by Ahmed Elzohry")
+                    .fontWeight(.semibold)
+
+                Image(systemName: "arrow.up.right")
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(.white.opacity(0.68))
+            }
+            .font(.footnote.weight(.medium))
+            .foregroundStyle(.white.opacity(0.72))
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background(.white.opacity(0.075), in: Capsule())
+            .overlay {
+                Capsule()
+                    .strokeBorder(.white.opacity(0.12), lineWidth: 1)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Created with love by Ahmed Elzohry. Opens developer profile.")
     }
 }
 

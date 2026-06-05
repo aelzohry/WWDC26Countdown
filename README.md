@@ -2,6 +2,8 @@
 
 A playful SwiftUI macOS countdown for WWDC26. It has a glowing animated window and a Menu Bar Extra for quick glances.
 
+Created with love by [Ahmed Elzohry](https://bio.link/aelzohry).
+
 The countdown targets Apple’s WWDC26 keynote: Monday, June 8, 2026 at 10:00 a.m. PT, and displays that moment in the device’s current timezone.
 
 ## Run

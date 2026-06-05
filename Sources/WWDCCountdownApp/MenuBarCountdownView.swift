@@ -50,6 +50,23 @@ struct MenuBarCountdownView: View {
                     }
                 }
                 .buttonStyle(.bordered)
+
+                Link(destination: URL(string: "https://bio.link/aelzohry")!) {
+                    HStack(spacing: 6) {
+                        Text("Created with")
+
+                        Image(systemName: "heart.fill")
+                            .foregroundStyle(AppTheme.pink)
+                            .accessibilityLabel("love")
+
+                        Text("by Ahmed Elzohry")
+                            .fontWeight(.semibold)
+                    }
+                    .font(.caption.weight(.medium))
+                    .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Created with love by Ahmed Elzohry. Opens developer profile.")
             }
             .padding(18)
             .frame(width: 330)
