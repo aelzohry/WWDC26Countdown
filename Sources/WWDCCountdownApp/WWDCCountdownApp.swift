@@ -14,11 +14,6 @@ struct WWDCCountdownApp: App {
                     appDelegate.showMainWindow()
                 }
                 .keyboardShortcut("0", modifiers: [.command])
-
-                Button("Reset Window Size") {
-                    appDelegate.resetMainWindowFrame()
-                }
-                .keyboardShortcut("0", modifiers: [.command, .option])
             }
         }
     }
