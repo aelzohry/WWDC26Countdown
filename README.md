@@ -1,6 +1,6 @@
 # WWDC26 Countdown
 
-A playful SwiftUI macOS countdown for WWDC26. It has a glowing animated window and a Menu Bar Extra for quick glances.
+A playful SwiftUI countdown for WWDC26. It has a glowing macOS window, a Menu Bar Extra for quick glances, and a touch-friendly iOS app.
 
 Created with love by [Ahmed Elzohry](https://bio.link/aelzohry).
 
@@ -19,6 +19,8 @@ open WWDC26Countdown.xcodeproj
 ```
 
 Select the `WWDC26Countdown` scheme and run it. The Xcode target uses local signing, so it should build and debug on this Mac without a developer team.
+
+For iOS, select the `WWDC26Countdown iOS` scheme and run it on a simulator or device.
 
 ## Build
 

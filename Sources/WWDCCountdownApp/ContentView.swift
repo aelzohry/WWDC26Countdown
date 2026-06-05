@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.openURL) private var openURL
     @AppStorage("showSeconds") private var showSeconds = true
     @State private var sparkleSeed = 0
 
@@ -50,7 +51,12 @@ struct ContentView: View {
 
                         CountdownGrid(snapshot: snapshot, showSeconds: showSeconds)
 
-                        ControlStrip(snapshot: snapshot, showSeconds: $showSeconds, sparkleSeed: $sparkleSeed)
+                        ControlStrip(
+                            snapshot: snapshot,
+                            showSeconds: $showSeconds,
+                            sparkleSeed: $sparkleSeed,
+                            openWWDCPage: { openURL(EventDates.wwdcURL) }
+                        )
                     }
                 }
 
@@ -107,99 +113,11 @@ private struct HeaderBar: View {
     }
 }
 
-private struct CreatorFooter: View {
-    private let profileURL = URL(string: "https://bio.link/aelzohry")!
-
-    var body: some View {
-        Link(destination: profileURL) {
-            HStack(spacing: 8) {
-                Text("Created with")
-
-                Image(systemName: "heart.fill")
-                    .foregroundStyle(AppTheme.pink)
-                    .symbolEffect(.pulse, options: .repeating)
-                    .accessibilityLabel("love")
-
-                Text("by Ahmed Elzohry")
-                    .fontWeight(.semibold)
-
-                Image(systemName: "arrow.up.right")
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.white.opacity(0.68))
-            }
-            .font(.footnote.weight(.medium))
-            .foregroundStyle(.white.opacity(0.72))
-            .padding(.horizontal, 14)
-            .padding(.vertical, 8)
-            .background(.white.opacity(0.075), in: Capsule())
-            .overlay {
-                Capsule()
-                    .strokeBorder(.white.opacity(0.12), lineWidth: 1)
-            }
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel("Created with love by Ahmed Elzohry. Opens developer profile.")
-    }
-}
-
-private struct CountdownGrid: View {
-    let snapshot: CountdownSnapshot
-    let showSeconds: Bool
-
-    private var units: [(String, Int)] {
-        var values = [
-            ("days", snapshot.days),
-            ("hours", snapshot.hours),
-            ("minutes", snapshot.minutes)
-        ]
-
-        if showSeconds {
-            values.append(("seconds", snapshot.seconds))
-        }
-
-        return values
-    }
-
-    var body: some View {
-        Grid(horizontalSpacing: 12, verticalSpacing: 12) {
-            GridRow {
-                ForEach(units, id: \.0) { label, value in
-                    CountdownTile(label: label, value: value)
-                }
-            }
-        }
-        .animation(.spring(response: 0.45, dampingFraction: 0.78), value: showSeconds)
-    }
-}
-
-private struct CountdownTile: View {
-    let label: String
-    let value: Int
-
-    var body: some View {
-        VStack(spacing: 6) {
-            Text(value, format: .number.precision(.integerLength(2)))
-                .font(.system(size: 48, weight: .black, design: .rounded))
-                .monospacedDigit()
-                .contentTransition(.numericText(value: Double(value)))
-                .animation(.smooth(duration: 0.28), value: value)
-
-            Text(label.uppercased())
-                .font(.caption.weight(.bold))
-                .tracking(1.4)
-                .foregroundStyle(.white.opacity(0.55))
-        }
-        .frame(width: 120, height: 112)
-        .brightCard()
-        .accessibilityElement(children: .ignore)
-        .accessibilityLabel("\(value) \(label)")
-    }
-}
-
 private struct ControlStrip: View {
     let snapshot: CountdownSnapshot
     @Binding var showSeconds: Bool
     @Binding var sparkleSeed: Int
+    var openWWDCPage: () -> Void
 
     var body: some View {
         HStack(spacing: 12) {
@@ -215,7 +133,7 @@ private struct ControlStrip: View {
             .tint(AppTheme.pink)
 
             Button {
-                NSWorkspace.shared.open(URL(string: "https://developer.apple.com/wwdc26/")!)
+                openWWDCPage()
             } label: {
                 Label(snapshot.isComplete ? "Watch WWDC" : "Open WWDC", systemImage: "safari")
             }

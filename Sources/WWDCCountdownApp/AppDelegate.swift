@@ -1,3 +1,4 @@
+#if os(macOS)
 import AppKit
 import SwiftUI
 
@@ -106,3 +107,4 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSPo
         statusItem?.button?.title = " " + snapshot.menuBarTitle
     }
 }
+#endif

@@ -1,6 +1,8 @@
 import Foundation
 
 enum EventDates {
+    static let wwdcURL = URL(string: "https://developer.apple.com/wwdc26/")!
+
     static let wwdc26Keynote: Date = {
         var components = DateComponents()
         components.calendar = Calendar(identifier: .gregorian)

@@ -1,3 +1,4 @@
+#if os(macOS)
 import SwiftUI
 
 struct MenuBarCountdownView: View {
@@ -41,7 +42,7 @@ struct MenuBarCountdownView: View {
                     }
 
                     Button("WWDC Page") {
-                        NSWorkspace.shared.open(URL(string: "https://developer.apple.com/wwdc26/")!)
+                        NSWorkspace.shared.open(EventDates.wwdcURL)
                         dismissMenu()
                     }
 
@@ -107,3 +108,4 @@ private struct CompactCountdown: View {
         .background(.quaternary, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }
+#endif
