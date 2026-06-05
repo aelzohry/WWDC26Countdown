@@ -28,56 +28,63 @@ struct IOSCountdownView: View {
             StarField(date: date, reduceMotion: reduceMotion)
                 .ignoresSafeArea()
 
-            ScrollView(.vertical) {
-                VStack(spacing: 22) {
-                    MobileHeader(snapshot: snapshot)
+            GeometryReader { proxy in
+                let contentWidth = min(proxy.size.width - 40, 520)
+                let compactHeight = proxy.size.height < 840
+                let heroSize = min(compactHeight ? 192 : 222, max(166, proxy.size.height * 0.24))
+                let tileWidth = min(showSeconds ? 78 : 94, (contentWidth - 36) / CGFloat(showSeconds ? 4 : 3))
+                let tileHeight: CGFloat = compactHeight ? 72 : 78
+                let verticalPadding: CGFloat = compactHeight ? 8 : 12
+
+                VStack(spacing: compactHeight ? 10 : 13) {
+                    MobileHeader(snapshot: snapshot, compact: compactHeight)
 
                     HeroOrb(snapshot: snapshot, date: date)
-                        .frame(width: 250, height: 250)
-                        .padding(.top, 2)
+                        .frame(width: heroSize, height: heroSize)
                         .accessibilityHidden(true)
 
-                    VStack(spacing: 10) {
+                    VStack(spacing: compactHeight ? 6 : 8) {
                         Text(snapshot.headline)
-                            .font(.system(size: 42, weight: .black, design: .rounded))
+                            .font(.system(size: compactHeight ? 32 : 36, weight: .black, design: .rounded))
                             .multilineTextAlignment(.center)
                             .lineLimit(2)
-                            .minimumScaleFactor(0.76)
+                            .minimumScaleFactor(0.74)
 
                         Text(snapshot.statusLine)
-                            .font(.callout.weight(.medium))
+                            .font(.system(size: compactHeight ? 14 : 15, weight: .medium))
                             .foregroundStyle(.white.opacity(0.72))
                             .multilineTextAlignment(.center)
-                            .fixedSize(horizontal: false, vertical: true)
+                            .lineLimit(2)
+                            .minimumScaleFactor(0.78)
                     }
 
                     CountdownGrid(
                         snapshot: snapshot,
                         showSeconds: showSeconds,
-                        tileWidth: showSeconds ? 78 : 92,
-                        tileHeight: 86,
-                        valueFontSize: 32
+                        tileWidth: tileWidth,
+                        tileHeight: tileHeight,
+                        valueFontSize: compactHeight ? 28 : 30
                     )
 
-                    MobileHypeCard(snapshot: snapshot)
+                    MobileHypeCard(snapshot: snapshot, compact: compactHeight)
 
                     MobileActionDock(
                         snapshot: snapshot,
                         showSeconds: $showSeconds,
                         sparkleSeed: $sparkleSeed,
+                        compact: compactHeight,
                         openWWDCPage: { openURL(EventDates.wwdcURL) }
                     )
 
+                    Spacer(minLength: compactHeight ? 4 : 12)
+
                     CreatorFooter()
-                        .padding(.top, 2)
                 }
                 .padding(.horizontal, 20)
-                .padding(.top, 18)
-                .padding(.bottom, 28)
-                .frame(maxWidth: 520)
-                .frame(maxWidth: .infinity)
+                .safeAreaPadding(.top, verticalPadding)
+                .safeAreaPadding(.bottom, verticalPadding)
+                .frame(width: proxy.size.width, height: proxy.size.height, alignment: .top)
             }
-            .scrollIndicators(.hidden)
         }
         .foregroundStyle(.white)
         .overlay {
@@ -89,17 +96,18 @@ struct IOSCountdownView: View {
 
 private struct MobileHeader: View {
     let snapshot: CountdownSnapshot
+    let compact: Bool
 
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: snapshot.hypeStage.symbol)
-                .font(.title3)
+                .font(compact ? .body : .title3)
                 .foregroundStyle(AppTheme.glowGradient)
                 .symbolEffect(.pulse, options: .repeating)
 
             VStack(alignment: .leading, spacing: 2) {
                 Text("WWDC26")
-                    .font(.headline.weight(.bold))
+                    .font((compact ? Font.subheadline : Font.headline).weight(.bold))
 
                 Text("June 8-12, 2026")
                     .font(.caption.weight(.semibold))
@@ -110,11 +118,11 @@ private struct MobileHeader: View {
 
             Text(snapshot.hypeStage.rawValue)
                 .font(.caption.weight(.bold))
-                .padding(.horizontal, 10)
-                .padding(.vertical, 7)
+                .padding(.horizontal, compact ? 8 : 10)
+                .padding(.vertical, compact ? 6 : 7)
                 .background(.white.opacity(0.1), in: Capsule())
         }
-        .padding(14)
+        .padding(compact ? 12 : 14)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 22, style: .continuous)
@@ -125,9 +133,10 @@ private struct MobileHeader: View {
 
 private struct MobileHypeCard: View {
     let snapshot: CountdownSnapshot
+    let compact: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: compact ? 8 : 10) {
             HStack {
                 Label("Hype meter", systemImage: "sparkles")
                     .font(.subheadline.weight(.bold))
@@ -143,7 +152,12 @@ private struct MobileHypeCard: View {
                 .tint(AppTheme.mint)
                 .scaleEffect(x: 1, y: 1.6, anchor: .center)
         }
-        .glassPanel(cornerRadius: 22)
+        .padding(compact ? 14 : 18)
+        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .strokeBorder(.white.opacity(0.14), lineWidth: 1)
+        }
     }
 }
 
@@ -151,16 +165,17 @@ private struct MobileActionDock: View {
     let snapshot: CountdownSnapshot
     @Binding var showSeconds: Bool
     @Binding var sparkleSeed: Int
+    let compact: Bool
     var openWWDCPage: () -> Void
 
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: compact ? 9 : 11) {
             Toggle(isOn: $showSeconds) {
                 Label("Show Seconds", systemImage: "timer")
             }
             .toggleStyle(.switch)
 
-            HStack(spacing: 12) {
+            HStack(spacing: compact ? 10 : 12) {
                 Button {
                     sparkleSeed += 1
                 } label: {
@@ -180,8 +195,8 @@ private struct MobileActionDock: View {
                 .tint(AppTheme.cyan)
             }
         }
-        .controlSize(.large)
-        .padding(16)
+        .controlSize(compact ? .regular : .large)
+        .padding(compact ? 14 : 16)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 24, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: 24, style: .continuous)
